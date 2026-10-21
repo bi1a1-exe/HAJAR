@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Hajar ✨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* ABSOLUTE FORCE-HIDE FOR ALL NETLIFY BADGES / DRAWERS / IFRAMES / PREVIEWS */
+        #netlify-drawer-button,
+        [data-netlify-drawer],
+        .netlify-badge,
+        .netlify-container,
+        iframe[src*="netlify"],
+        div[class*="netlify"],
+        iframe[id*="netlify"],
+        div[id*="netlify"],
+        [class*="Netlify"],
+        [id*="Netlify"],
+        iframe[title*="Netlify"],
+        div[style*="position: fixed"][style*="bottom"],
+        iframe[style*="position: fixed"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            max-width: 0 !important;
+            max-height: 0 !important;
+            z-index: -99999 !important;
+            position: absolute !important;
+            left: -9999px !important;
+            top: -9999px !important;
+        }
+
+        :root {
+            --bg-dark: #07030a;
+            --pink-main: #ff2a75;
+            --pink-glow: rgba(255, 42, 117, 0.5);
+            --pink-card-bg: rgba(22, 10, 29, 0.85);
+            --border-purple: rgba(255, 42, 117, 0.25);
+            --text-white: #ffffff;
+            --text-subtle: #c8b9d6;
+            --gold-accent: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 520px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px) scale(0.98);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* PAGE 1 DESIGN */
+        .page1-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text-white);
+            margin-bottom: 5px;
+        }
+
+        .page1-cursive {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.2rem;
+            color: #ff3385;
+            text-shadow: 0 0 25px rgba(255, 42, 117, 0.8), 0 0 10px rgba(255, 42, 117, 0.5);
+            margin-bottom: 25px;
+            display: block;
+            margin-top: -5px;
+        }
+
+        .page1-message {
+            font-size: 1.05rem;
+            color: #d8cce3;
+            line-height: 1.75;
+            max-width: 460px;
+            margin: 0 auto 30px auto;
+            font-weight: 400;
+        }
+
+        .icons-row-p1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+        }
+
+        .btn-pink-glowing {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ff2a75, #d81b60);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 16px 36px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 25px var(--pink-glow), 0 0 15px rgba(255, 42, 117, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-pink-glowing:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(255, 42, 117, 0.8);
+        }
+
+        /* PAGE 2 DESIGN */
+        .small-top-label {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--pink-main);
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .main-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .note-card {
+            background: var(--pink-card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-purple);
+            border-radius: 28px;
+            padding: 35px 30px;
+            text-align: left;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9),
+                        0 0 30px var(--pink-glow);
+            position: relative;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title .heart-icon {
+            color: var(--pink-main);
+            font-size: 1.2rem;
+        }
+
+        .note-text {
+            font-size: 1.05rem;
+            color: #e3d7ed;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .cursive-signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.3rem;
+            color: #ff3385;
+            text-align: center;
+            margin-top: 10px;
+            text-shadow: 0 0 15px rgba(255, 51, 133, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .bottom-section {
+            margin-top: 35px;
+        }
+
+        .tap-prompt {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #b3a2c4;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cards-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .icon-card {
+            background: rgba(22, 10, 29, 0.8);
+            border: 1px solid rgba(255, 42, 117, 0.25);
+            border-radius: 18px;
+            padding: 20px;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--pink-main);
+            box-shadow: 0 12px 25px var(--pink-glow);
+        }
+
+        /* POPUP WISH MODAL */
+        .wish-modal {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(22, 10, 29, 0.95);
+            border: 1px solid var(--pink-main);
+            border-radius: 20px;
+            padding: 0 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 25px var(--pink-glow);
+            text-align: center;
+        }
+
+        .wish-modal.active {
+            max-height: 200px;
+            opacity: 1;
+            padding: 20px;
+        }
+
+        .wish-modal h3 {
+            color: var(--pink-main);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .wish-modal p {
+            color: #e3d7ed;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--pink-main);
+            color: var(--pink-main);
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--pink-main);
+            color: white;
+            box-shadow: 0 0 15px var(--pink-glow);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bgCanvas"></canvas>
+
+    <div class="container">
+        <!-- PAGE 1 -->
+        <div class="page active" id="page1">
+            <h1 class="page1-title">Happy Birthday</h1>
+            <span class="page1-cursive">Hajar</span>
+
+            <p class="page1-message">
+                Today marks the beginning of an extraordinary new chapter! May your journey be blessed with boundless happiness, magic, laughter, and endless opportunities. You bring light and elegance into every room you enter! ✨ 💖
+            </p>
+
+            <div class="icons-row-p1">
+                <span>💖</span>
+                <span>💎</span>
+                <span>🎂</span>
+                <span>💖</span>
+            </div>
+
+            <button class="btn-pink-glowing" onclick="goToPage(2)">
+                Open Special Gift ➔
+            </button>
+        </div>
+
+        <!-- PAGE 2 -->
+        <div class="page" id="page2">
+            <div class="small-top-label">SECRET BIRTHDAY MESSAGE</div>
+            <h1 class="main-title">A Special Note For Hajar ✨</h1>
+
+            <div class="note-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="heart-icon">💖</span> Happy Birthday, Hajar!
+                    </div>
+                </div>
+
+                <p class="note-text">
+                    "This beautiful moment is filled with fresh beginnings, freedom, and endless potential. May your life journey be illuminated with unconditional happiness, true friendships, peace, and remarkable accomplishments. Keep smiling bright and inspiring everyone around you!"
+                </p>
+
+                <div class="cursive-signature">
+                    ~ Wishing You The Best Birthday Ever 💕
+                </div>
+            </div>
+
+            <div class="bottom-section">
+                <div class="tap-prompt">TAP A CARD TO REVEAL SECRET WISH ✦</div>
+                <div class="cards-row">
+                    <div class="icon-card" onclick="showWish(1)">📜</div>
+                    <div class="icon-card" onclick="showWish(2)">👑</div>
+                    <div class="icon-card" onclick="showWish(3)">🪄</div>
+                </div>
+
+                <div class="wish-modal" id="wishModal">
+                    <h3 id="wishTitle">✨ Secret Wish</h3>
+                    <p id="wishText">Tap any icon above!</p>
+                </div>
+
+                <button class="btn-secondary" onclick="goToPage(1)">
+                    ↩ Back to Start
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM OBSERVER TO AUTOMATICALLY KILL ANY NETLIFY INJECTED BADGES
+        const removeNetlifyElements = () => {
+            const netlifyElements = document.querySelectorAll(`
+                #netlify-drawer-button,
+                [data-netlify-drawer],
+                .netlify-badge,
+                iframe[src*="netlify"],
+                div[class*="netlify"],
+                iframe[id*="netlify"],
+                div[id*="netlify"]
+            `);
+            netlifyElements.forEach(el => el.remove());
+        };
+
+        // Run immediately & repeatedly
+        setInterval(removeNetlifyElements, 100);
+
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        class Heart {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = height + 20;
+                this.size = Math.random() * 14 + 8;
+                this.speedY = Math.random() * 1.5 + 0.8;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                this.color = `rgba(255, 42, 117, ${this.opacity})`;
+            }
+
+            update() {
+                this.y -= this.speedY;
+                this.x += Math.sin(this.y * 0.02) * 0.5;
+                if (this.y < -30) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.beginPath();
+                const topCurveHeight = this.size * 0.3;
+                ctx.moveTo(0, topCurveHeight);
+                ctx.bezierCurveTo(0, 0, -this.size / 2, 0, -this.size / 2, topCurveHeight);
+                ctx.bezierCurveTo(-this.size / 2, (this.size + topCurveHeight) / 2, 0, this.size, 0, this.size);
+                ctx.bezierCurveTo(0, this.size, this.size / 2, (this.size + topCurveHeight) / 2, this.size / 2, topCurveHeight);
+                ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
+                ctx.closePath();
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = 'rgba(255, 42, 117, 0.5)';
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        const hearts = Array.from({ length: 30 }, () => new Heart());
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            hearts.forEach(h => {
+                h.update();
+                h.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        function goToPage(pageNum) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            setTimeout(() => {
+                document.getElementById(`page${pageNum}`).classList.add('active');
+            }, 100);
+        }
+
+        const wishes = {
+            1: {
+                title: "📜 Wisdom & Dreams",
+                text: "May all your big goals, ambitions, and secret dreams come true this year! Step into this beautiful new chapter with total confidence."
+            },
+            2: {
+                title: "👑 Elegance & Royalty",
+                text: "Never forget how special, unique, and magnificent you are. Keep shining brighter than everyone else!"
+            },
+            3: {
+                title: "🪄 Pure Magic & Happiness",
+                text: "May your path be filled with endless smiles, pure joy, deep peace, and unbelievable accomplishments!"
+            }
+        };
+
+        function showWish(id) {
+            const modal = document.getElementById('wishModal');
+            const title = document.getElementById('wishTitle');
+            const text = document.getElementById('wishText');
+
+            title.textContent = wishes[id].title;
+            text.textContent = wishes[id].text;
+
+            modal.classList.add('active');
+        }
+    </script>
+</body>
+</html>
